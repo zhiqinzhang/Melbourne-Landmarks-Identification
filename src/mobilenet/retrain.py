@@ -137,6 +137,7 @@ MAX_NUM_IMAGES_PER_CLASS = 2 ** 27 - 1  # ~134M
 
 # The location where variable checkpoints will be stored.
 CHECKPOINT_NAME = '/tmp/_retrain_checkpoint'
+# CHECKPOINT_NAME = '/output/mobilenet_v1_100_224_quant_11_labels_checkpoint.ckpt'
 
 # A module is understood as instrumented for quantization with TF-Lite
 # if it contains any of these ops.
@@ -488,6 +489,7 @@ def get_random_cached_bottlenecks(sess, image_lists, how_many, category,
     sess: Current TensorFlow Session.
     image_lists: OrderedDict of training images for each label.
     how_many: If positive, a random sample of this size will be chosen.
+    batch size
     If negative, all bottlenecks will be retrieved.
     category: Name string of which set to pull from - training, testing, or
     validation.
@@ -1204,7 +1206,7 @@ if __name__ == '__main__':
   parser.add_argument(
       '--how_many_training_steps',
       type=int,
-      default=4000,
+      default=10000,
       help='How many training steps to run before ending.'
   )
   parser.add_argument(
@@ -1228,13 +1230,13 @@ if __name__ == '__main__':
   parser.add_argument(
       '--eval_step_interval',
       type=int,
-      default=10,
+      default=50,
       help='How often to evaluate the training results.'
   )
   parser.add_argument(
       '--train_batch_size',
       type=int,
-      default=100,
+      default=16,
       help='How many images to train on at a time.'
   )
   parser.add_argument(
@@ -1251,7 +1253,7 @@ if __name__ == '__main__':
   parser.add_argument(
       '--validation_batch_size',
       type=int,
-      default=100,
+      default=-1,
       help="""\
       How many images to use in an evaluation batch. This validation set is
       used much more often than the test set, and is an early indicator of how
