@@ -89,7 +89,7 @@ def load_labels(label_file):
 
 def single_imgae_classifier(filename):
   file_name = filename
-  # model_file = "./output/inception_v3_batch128_lr0_1/inception_v3_batch128_lr0.1.pb"
+  # model_file = "./output/inception_v3_batch64_lr0_1/inception_v3_batch64_lr0.1.pb"
   model_file = "./output/mobilenet_v1_075_160_batch64_lr0_1/mobilenet_v1_batch64_lr0.1.pb"
 
   label_file = "./output/output_labels.txt"
