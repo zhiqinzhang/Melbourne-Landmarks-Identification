@@ -1,5 +1,5 @@
 # Melbourne Landmark Identification 
-This sub-project is based on 0.75 MobileNet v1 160 and Inception v3.
+This sub-project is based on 0.75 MobileNet v1 160 (the model of inception v3 is also provided). 
 To start classifictaion, simply invoke the single_image_classifier method in classifier.py.
 Do not forget to specify the filename you want to recognize.
 ## Start a Server
